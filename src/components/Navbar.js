@@ -9,12 +9,12 @@ export default function Navbar() {
     return (
         <ProductConsumer>
             {value => {
-                const { links, cartItems } = value
-
+                const { links, cartItems, handleSidebar } = value
+                console.log(value)
                 return (
                     <NavWrapper>
                         <div className="nav-center">
-                            <FaBars className="nav-icon nav-bars" />
+                            <FaBars className="nav-icon nav-bars" onClick={handleSidebar} />
                             <h1 className='text-title'>My Store</h1>
                             <nav>
                                 <ul>
@@ -44,7 +44,7 @@ const NavWrapper = styled.nav`
     position: sticky;
     top: 0;
     width: 100%; 
-    padding: 1rem 1.5rem;
+    padding: 0rem 1.5rem;
     background: var(--mainGrey);
     border-bottom: 3px solid var(--darkOrange);
     z-index: 1;
@@ -53,10 +53,10 @@ const NavWrapper = styled.nav`
         align-items: center;
         justify-content: space-between;
         max-width: 1170px;
-        margin: 0 auto;
+        margin: 0 auto; 
     }
     .nav-center h1 {
-        color: var(--darkOrange); 
+        color: var(--darkOrange);  
     }
     .nav-icon {
         font-size: 1.5rem;
@@ -95,12 +95,19 @@ const NavWrapper = styled.nav`
     }
     .nav-links {
         display: block;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         text-transform: capitalize;
         padding: .5rem 1.5rem;
          background: var(--mainGrey);
         transition: var(--mainTransition); 
         color: var(--mainBlack);
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    }
+    .nav-links:hover {
+        color: var(--mainWhite);
+        background: var(--darkOrange);
+        text-decoration: none;
+        
     }
     ul{
         list-style: none;

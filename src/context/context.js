@@ -20,11 +20,21 @@ export default class ProductProvider extends Component {
         singleProduct: {},
     }
 
+
+
+
+    handleSidebar = () => {
+        this.setState({
+            sidebarOpen: !this.state.sidebarOpen
+        })
+    }
+
     render() {
 
         return (
             <ProductContext.Provider value={{
-                ...this.state
+                ...this.state,
+                handleSidebar: this.handleSidebar
             }}>
                 {this.props.children}
             </ProductContext.Provider>
