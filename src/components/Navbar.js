@@ -46,7 +46,7 @@ const NavWrapper = styled.nav`
     width: 100%; 
     padding: 0rem 1.5rem;  
     z-index: 2; 
-    background: rgba(0,0,0,.4);
+    /* background: rgba(0,0,0,.4); */
     .nav-center {
         display: flex;
         align-items: center;
