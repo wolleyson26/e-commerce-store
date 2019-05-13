@@ -8,6 +8,7 @@
   --mainWhite: #fff;
   --mainBlack: #222;
   --darkOrange: #f08700;
+  --lightOrange: #e9b44c;
   --mainTransition: all 0.3s ease-in-out;
   --mainSpacing: 0.3rem;
 }
@@ -28,23 +29,41 @@ body {
   color: var(--primaryColor);
 }
 
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.mt {
+  margin-top: 1rem;
+}
+
+.mb {
+  margin-bottom: 2rem;
+}
+
+.text {
+  font-size: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .main-link {
   padding: 0.5rem 1rem;
-  background: var(--primaryColor);
+  background: var(--darkOrange);
   color: var(--mainWhite);
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
-  outline: 2px solid var(--primaryColor);
-  outline-offset: 4px;
-  border: none;
+  box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75);
   transition: var(--mainTransition);
 }
 .main-link:hover {
-  background: var(--darkGrey);
+  background: var(--lightOrange);
   text-decoration: none;
-  color: var(--primaryColor);
-  outline-color: var(--darkGrey);
+  color: var(--mainWhite);
+  outline-color: var(--mainWhite);
 }
 
 .cart-icon {

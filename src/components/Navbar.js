@@ -9,8 +9,8 @@ export default function Navbar() {
     return (
         <ProductConsumer>
             {value => {
-                const { links, cartItems, handleSidebar } = value
-                console.log(value)
+                const { links, cartItems, handleSidebar, handleCart } = value
+
                 return (
                     <NavWrapper>
                         <div className="nav-center">
@@ -28,7 +28,7 @@ export default function Navbar() {
                                 </ul>
                             </nav>
                             <div className="nav-cart">
-                                <FaCartPlus className="nav-icon" />
+                                <FaCartPlus className="nav-icon" onClick={handleCart} />
                                 <div className="cart-items">{cartItems}</div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ const NavWrapper = styled.nav`
     padding: 0rem 1.5rem;
     background: var(--mainGrey);
     border-bottom: 3px solid var(--darkOrange);
-    z-index: 1;
+    z-index: 2;
     .nav-center {
         display: flex;
         align-items: center;
@@ -91,16 +91,16 @@ const NavWrapper = styled.nav`
     @media (max-width:768px) {
         nav {
             display: none;
-        }
+        } 
     }
     .nav-links {
         display: block;
         font-size: 1.2rem;
         text-transform: capitalize;
-        padding: .5rem 1.5rem;
-         background: var(--mainGrey);
-        transition: var(--mainTransition); 
         color: var(--mainBlack);
+        padding: 1rem 1.5rem !important; 
+        background: var(--mainGrey);
+        transition: var(--mainTransition); 
         clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     }
     .nav-links:hover {
@@ -109,10 +109,11 @@ const NavWrapper = styled.nav`
         text-decoration: none;
         
     }
+    
     ul{
         list-style: none;
         padding: 0 !important;
-    } 
+    }  
     
 
 `

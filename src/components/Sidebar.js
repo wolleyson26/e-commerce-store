@@ -23,6 +23,11 @@ export default function Sidebar() {
                                 )
                             })}
                         </ul>
+                        <div className="social-icons">
+                            <i className="facebook icon"></i>
+                            <i className="instagram icon"></i>
+                            <i className="linkedin icon"></i>
+                        </div>
                     </SideWrapper>
                 )
             }}
@@ -37,7 +42,7 @@ const SideWrapper = styled.nav`
     width: 100%;
     height: 100%;
     background: var(--darkOrange);
-    /* z-index: 1;  */
+    z-index: 1; 
     transition: var(--mainTransition);
     transform: ${props => (props.show ? 'translateY(0)' : 'translateY(-120%)')};
     ul {
@@ -50,6 +55,7 @@ const SideWrapper = styled.nav`
         text-transform: capitalize;
         color: var(--mainWhite);
         padding: .5rem 1.5rem;
+        margin: 1rem 0;
         transition: var(--mainTransition);
     }
     .sidebar-links:hover {
@@ -57,4 +63,15 @@ const SideWrapper = styled.nav`
         color: var(--mainWhite);
         padding: .5rem 1.5rem .5rem 2.5rem;
     } 
+    .social-icons {
+        font-size: 1.5rem;
+        color: var(--mainWhite);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem;
+    }
+    .social-icons i {
+        padding: 2.5rem;
+    }
 `
