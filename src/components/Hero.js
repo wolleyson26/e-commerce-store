@@ -18,12 +18,11 @@ const HeroWrapper = styled.div`
     min-height: 65vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     color: var(--mainWhite);
     margin-top: -80px;
-    background: linear-gradient(var(--primaryRGBA), var(--primaryRGBA)),
-    url(${props => props.img}) center/cover no-repeat;
-    background: #1B1C1D !important;
+    background: radial-gradient(circle, #64686c, #505457, #3e4043, #2c2d2f, #1b1c1d),
+    url(${props => props.img}) center/cover no-repeat; 
     .title {
         padding-top: 2rem;
         font-size: 3.5rem;
@@ -32,7 +31,3 @@ const HeroWrapper = styled.div`
         letter-spacing: var(--mainSpacing);
     } 
 `
-
-Hero.defaultProps = {
-    img: mainBcg
-}

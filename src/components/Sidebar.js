@@ -37,7 +37,7 @@ export default function Sidebar() {
 
 const SideWrapper = styled.nav`
     position: fixed;
-    top: 70px;
+    top: 73px;
     left: 0;
     width: 100%;
     height: 100%;

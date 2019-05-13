@@ -21,10 +21,11 @@ export default class ProductProvider extends Component {
         featuredProducts: [],
         singleProduct: {},
         socialIcons: socialData,
+        isTop: true
     }
 
     componentDidMount() {
-
+ 
         this.setProducts(items)
     }
 
@@ -43,15 +44,50 @@ export default class ProductProvider extends Component {
             storeProducts,
             filteredProducts: storeProducts,
             featuredProducts,
-            // cart: this.getStorageCart(),
+            cart: this.getStorageCart(),
             // singleProduct: this.getSingleProduct(),
             loading: false,
 
-        })
+        }, () => this.addTotals())
 
     }
 
+    getTotals = () => {
+        let subTotal = 0
+        let cartItems = 0
+        this.state.cart.forEach(item => {
+            subTotal += item.total
+            cartItems += item.count
+        })
 
+        subTotal = parseFloat(subTotal.toFixed(2))
+        let tax = subTotal * .06625
+        tax = parseFloat(tax.toFixed(2))
+        let total = subTotal + tax
+        total = parseFloat(total.toFixed(2))
+
+        return {
+            cartItems,
+            subTotal,
+            tax,
+            total
+        }
+    }
+
+    addTotals = () => {
+        const totals = this.getTotals()
+        this.setState({
+            cartItems: totals.cartItems,
+            cartSubTotal: totals.subTotal,
+            cartTax: totals.tax,
+            cartTotal: totals.total
+        })
+    }
+
+    getStorageCart = () => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || []
+        return cart
+    }
 
     handleSidebar = () => {
         this.setState({
@@ -73,6 +109,34 @@ export default class ProductProvider extends Component {
         this.setState({ cartOpen: true })
     }
 
+    syncStorage = () => {
+        localStorage.setItem('cart', JSON.stringify(this.state.cart))
+    }
+
+    addToCart = (id) => {
+        let tempCart = [...this.state.cart]
+        let tempProducts = [...this.state.storeProducts]
+        let tempItem = tempCart.find(item => item.id === id)
+        if (!tempItem) {
+            tempItem = tempProducts.find(item => item.id === id)
+            let total = tempItem.price
+            let cartItem = { ...tempItem, count: 1, total }
+            tempCart = [...tempCart, cartItem]
+        } else {
+            tempItem.count++
+            tempItem.total = tempItem.price * tempItem.count
+            tempItem.total = parseFloat(tempItem.total.toFixed(2))
+        }
+
+        this.setState({
+            cart: tempCart
+        }, () => {
+            this.addTotals()
+            this.syncStorage()
+            this.openCart()
+        })
+    } 
+
     render() {
 
         return (
@@ -81,7 +145,9 @@ export default class ProductProvider extends Component {
                 handleSidebar: this.handleSidebar,
                 handleCart: this.handleCart,
                 openCart: this.openCart,
-                closeCart: this.closeCart
+                closeCart: this.closeCart,
+                addToCart: this.addToCart,
+                handleNavMenu: this.handleNavMenu,
             }}>
                 {this.props.children}
             </ProductContext.Provider>

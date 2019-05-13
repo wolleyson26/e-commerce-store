@@ -9,10 +9,10 @@ export default function Navbar() {
     return (
         <ProductConsumer>
             {value => {
-                const { links, cartItems, handleSidebar, handleCart } = value
+                const { links, cartItems, handleSidebar, handleCart, handleNavMenu } = value
 
                 return (
-                    <NavWrapper>
+                    <NavWrapper onScroll={handleNavMenu}>
                         <div className="nav-center">
                             <FaBars className="nav-icon nav-bars" onClick={handleSidebar} />
                             <h1 className='text-title'>My Store</h1>
@@ -44,9 +44,9 @@ const NavWrapper = styled.nav`
     position: sticky;
     top: 0;
     width: 100%; 
-    padding: 0rem 1.5rem; 
-    background: #1B1C1D; 
-    z-index: 2;
+    padding: 0rem 1.5rem;  
+    z-index: 2; 
+    background: rgba(0,0,0,.4);
     .nav-center {
         display: flex;
         align-items: center;
@@ -56,10 +56,12 @@ const NavWrapper = styled.nav`
     }
     .nav-center h1 {
         color: var(--darkOrange);  
+        text-shadow: 4px 4px 2px rgba(0,0,0,.3);
     }
     .nav-icon {
         font-size: 1.5rem;
         cursor: pointer;
+        text-shadow: 4px 4px 2px rgba(0,0,0,.3);
     }
     .nav-cart {
         color: var(--primaryColor);
@@ -102,6 +104,7 @@ const NavWrapper = styled.nav`
         color: rgba(255, 255, 255, 0.7);;
         padding: 1rem 1.5rem !important;  
         transition: var(--mainTransition); 
+        text-shadow: 4px 4px 2px rgba(0,0,0,.3);
         /* clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); */
     }
     .nav-links:hover {

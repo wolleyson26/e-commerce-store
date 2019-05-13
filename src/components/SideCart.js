@@ -8,21 +8,24 @@ export default function SideCart() {
         <ProductConsumer>
             {value => {
                 const { cartOpen, closeCart, cart, cartTotal } = value
+                console.log(cart)
                 return (
                     <CartWrapper show={cartOpen} onClick={closeCart}>
                         <ul>
                             {cart.map(item => {
                                 return (
-                                    <li key={item.id} className='cart-item'>
-                                        <img src={item.image} width='35' alt="cart item" />
+                                    <li key={item.id} className='cart-item mb'>
+                                        <img src={item.image} width='35' alt="cart image" />
+                                        <div className="mt"></div>
                                         <div>
-                                            <h6 className='text-uppercase'>{item.title}</h6>
-                                            <h6 className='text-title text-capitalize'>amount: {item.count}</h6>
+                                            <p className='text-capitalize'>{item.title}</p>
+                                            <p className='text-capitalize'>amount: {item.count}</p>
                                         </div>
                                     </li>
                                 )
                             })}
                         </ul>
+                        <div className="mb"></div>
                         <h4 className="text-capitalize text">cart total: ${cartTotal}</h4>
                         <div className="text-center">
                             <Link to='/cart' className="main-link">cart page</Link>
@@ -35,6 +38,7 @@ export default function SideCart() {
 }
 
 const CartWrapper = styled.div` 
+    font-family: 'Montserrat', sans-serif;
     position: fixed;
     top: 72px;
     right: 0;
@@ -53,7 +57,14 @@ const CartWrapper = styled.div`
     ul {
         padding: 0 !important;
     }
-    cart-item {
+    .cart-item {
         list-style-type: none;
+        font-size: 1.2rem;
+        padding-bottom: 0px !important;
+    }
+    .cart-item p {
+        line-height: 15px;
+        font-weight: bold;
+        color: var(--darkGrey);
     }
 `
