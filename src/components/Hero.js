@@ -15,13 +15,15 @@ export default function Hero({ img, title, children }) {
 
 const HeroWrapper = styled.div`
     text-align: center;
-    min-height: 60vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--mainWhite);
+    margin-top: -80px;
     background: linear-gradient(var(--primaryRGBA), var(--primaryRGBA)),
     url(${props => props.img}) center/cover no-repeat;
+    background: #1B1C1D !important;
     .title {
         padding-top: 2rem;
         font-size: 3.5rem;

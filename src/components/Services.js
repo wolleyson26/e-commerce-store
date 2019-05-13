@@ -58,7 +58,7 @@ const ServicesWrapper = styled.div`
     text-align:center; 
     .service-icon {
         font-size: 2.5rem;
-        color: var(--darkOrange);
+        color: var(--darkOrange); 
     }
     
     @media (max-width:768px){

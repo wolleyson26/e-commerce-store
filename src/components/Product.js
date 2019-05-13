@@ -16,7 +16,7 @@ export default function Product({ product }) {
                 <img src={product.image} alt="product" className="card-img-top" style={{ height: '230px' }} />
               </div>
               <div className="product-icons">
-                <Link to={`/product/${product.id}`} onClick={() => setSingleProduct(product.id)}><FaSearch className='icon'></FaSearch></Link>
+                <Link to={`/products/${product.id}`} onClick={() => setSingleProduct(product.id)}><FaSearch className='icon'></FaSearch></Link>
                 <FaCartPlus className="icon" onClick={() => addToCart(product.id)}></FaCartPlus>
               </div>
               <div className="content">

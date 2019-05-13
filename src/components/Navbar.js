@@ -44,9 +44,8 @@ const NavWrapper = styled.nav`
     position: sticky;
     top: 0;
     width: 100%; 
-    padding: 0rem 1.5rem;
-    background: var(--mainGrey);
-    border-bottom: 3px solid var(--darkOrange);
+    padding: 0rem 1.5rem; 
+    background: #1B1C1D; 
     z-index: 2;
     .nav-center {
         display: flex;
@@ -76,10 +75,13 @@ const NavWrapper = styled.nav`
         padding: 0 5px;
         border-radius: 50%;
     }
+    .nav-bars {
+        color: var(--mainWhite);
+    }
 
     @media (min-width:768px){
         .nav-bars {
-            display: none;
+            display: none; 
         }
         li {
             display: inline-block;
@@ -97,15 +99,13 @@ const NavWrapper = styled.nav`
         display: block;
         font-size: 1.2rem;
         text-transform: capitalize;
-        color: var(--mainBlack);
-        padding: 1rem 1.5rem !important; 
-        background: var(--mainGrey);
+        color: rgba(255, 255, 255, 0.7);;
+        padding: 1rem 1.5rem !important;  
         transition: var(--mainTransition); 
-        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        /* clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); */
     }
     .nav-links:hover {
         color: var(--mainWhite);
-        background: var(--darkOrange);
         text-decoration: none;
         
     }
