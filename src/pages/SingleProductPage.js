@@ -22,6 +22,7 @@ export default function SIngleProductPage() {
                                 <div className="img-container">
                                     <img key={id} src={`../${image}`} alt="product image" />
                                 </div>
+                                <div className="mb"></div>
                                 <div className="product-container">
                                     <h5 className="text-title">product: {title}</h5>
                                     <h5 className="text-title">price: ${price}</h5>
@@ -51,4 +52,7 @@ const SinglePageWrapper = styled.section`
         width: 100%;
         z-index: 1;
     } 
+    .img-container img {
+        max-width: 340px;
+    }
 `

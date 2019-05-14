@@ -44,7 +44,7 @@ export default class ProductProvider extends Component {
             filteredProducts: storeProducts,
             featuredProducts,
             cart: this.getStorageCart(),
-            // singleProduct: this.getSingleProduct(),
+            singleProduct: this.getSingleProduct(),
             loading: false,
 
         }, () => this.addTotals())
@@ -173,9 +173,16 @@ export default class ProductProvider extends Component {
     setSingleProduct = (id) => {
         let product = this.state.storeProducts.find(item => item.id === id)
 
+        localStorage.setItem('singleProduct', JSON.stringify(product))
+
         this.setState({
             singleProduct: { ...product }
         })
+    }
+
+    getSingleProduct = () => {
+        let cart = JSON.parse(localStorage.getItem('singleProduct')) || []
+        return cart
     }
 
     syncStorage = () => {
