@@ -34,12 +34,20 @@ body {
   text-transform: capitalize;
 }
 
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 .mt {
   margin-top: 1rem;
 }
 
 .mb {
   margin-bottom: 2rem;
+}
+
+.mx {
+  margin: 0 0.5rem;
 }
 
 .text {

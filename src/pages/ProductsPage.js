@@ -12,12 +12,13 @@ export default function ProductsPage() {
 }
 
 const ProductPageWrapper = styled.div`
-    .nav-background {
+    .nav-background { 
         background: #1B1C1D;
-        position: absolute;
+        position: fixed;
         height: 70px;
         z-index: 0;
         top: 0;
         width: 100%;
+        z-index: 1;
     }
 `

@@ -11,10 +11,10 @@ export default function Featured() {
       <div className="ui stackable grid" style={{justifyContent:'center'}}>
         <ProductConsumer>
           {value => {
-            const { featuredProducts, } = value
+            const { featuredProducts, setSingleProduct } = value
 
             return featuredProducts.map(product => (
-              <Product key={product.id} product={product} />
+              <Product key={product.id} product={product} onClick={() => setSingleProduct(product.id)}/>
             ))
           }}
         </ProductConsumer>

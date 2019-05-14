@@ -15,6 +15,7 @@ export default function AboutPage() {
 
 const PageWrapper = styled.div`
     .nav-background {
+        position: sticky;
         background: #1B1C1D;
         position: absolute;
         height: 70px;

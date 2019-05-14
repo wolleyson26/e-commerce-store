@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import CartSection from '../components/CartPage'
 
 export default function CartPage() {
     return (
         <CartPageWrapper>
             <div className="nav-background"></div>
-            <div>
-                <h1>Hello from cart page</h1>
+            <div className="ui container">
+                <CartSection />
             </div>
         </CartPageWrapper>
     )
@@ -14,12 +15,14 @@ export default function CartPage() {
 
 
 const CartPageWrapper = styled.div`
+    min-height: 60vh;
     .nav-background {
         background: #1B1C1D;
-        position: absolute;
+        position: fixed;
         height: 70px;
         z-index: 0;
         top: 0;
         width: 100%;
+        z-index: 1;
     }
 `

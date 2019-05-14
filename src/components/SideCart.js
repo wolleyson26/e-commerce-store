@@ -8,7 +8,7 @@ export default function SideCart() {
         <ProductConsumer>
             {value => {
                 const { cartOpen, closeCart, cart, cartTotal } = value
-                console.log(cart)
+             
                 return (
                     <CartWrapper show={cartOpen} onClick={closeCart}>
                         <ul>
@@ -40,15 +40,15 @@ export default function SideCart() {
 const CartWrapper = styled.div` 
     font-family: 'Montserrat', sans-serif;
     position: fixed;
-    top: 72px;
+    top: 70px;
     right: 0;
     width: 100%;
     height: 100%;
     background: var(--mainGrey);
-    z-index: 3;
+    z-index: 5;
     transform: ${props => (props.show ? 'translateX(0)' : 'translateX(100%)')};
     transition: var(--mainTransition);
-    border-left: 4px solid #F7ECE1;
+    border-left: 4px solid #F7ECE1; 
     @media (min-width:576px) {
         width: 25rem;
     }
@@ -66,5 +66,5 @@ const CartWrapper = styled.div`
         line-height: 15px;
         font-weight: bold;
         color: var(--darkGrey);
-    }
+    } 
 `

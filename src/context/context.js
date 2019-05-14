@@ -21,11 +21,10 @@ export default class ProductProvider extends Component {
         featuredProducts: [],
         singleProduct: {},
         socialIcons: socialData,
-        isTop: true
     }
 
     componentDidMount() {
- 
+
         this.setProducts(items)
     }
 
@@ -109,6 +108,76 @@ export default class ProductProvider extends Component {
         this.setState({ cartOpen: true })
     }
 
+    increment = (id) => {
+        let tempCart = [...this.state.cart]
+        const cartItem = tempCart.find(item => item.id === id)
+        cartItem.count++
+        cartItem.total = cartItem.price * cartItem.count
+        cartItem.total = parseFloat(cartItem.total.toFixed(2))
+
+        this.setState(() => {
+            return {
+                cart: [...tempCart]
+            }
+        }, () => {
+            this.addTotals()
+            this.syncStorage()
+        })
+    }
+
+    decrement = (id) => {
+        let tempCart = [...this.state.cart]
+        const cartItem = tempCart.find(item => item.id === id)
+
+        cartItem.count--;
+
+        if (cartItem.count === 0) {
+            this.removeItem(id)
+        } else {
+            cartItem.total = cartItem.price * cartItem.count
+            cartItem.total = parseFloat(cartItem.total.toFixed(2))
+
+            this.setState(() => {
+                return {
+                    cart: [...tempCart]
+                }
+            }, () => {
+                this.addTotals()
+                this.syncStorage()
+            })
+        }
+
+    }
+
+    removeItem = (id) => {
+        let tempCart = [...this.state.cart]
+        tempCart = tempCart.filter(item => item.id !== id)
+
+        this.setState({
+            cart: tempCart
+        }, () => {
+            this.addTotals()
+            this.syncStorage()
+        })
+    }
+
+    clearCart = () => {
+        this.setState({
+            cart: []
+        }, () => {
+            this.addTotals()
+            this.syncStorage()
+        })
+    }
+
+    setSingleProduct = (id) => {
+        let product = this.state.storeProducts.find(item => item.id === id)
+
+        this.setState({
+            singleProduct: { ...product }
+        })
+    }
+
     syncStorage = () => {
         localStorage.setItem('cart', JSON.stringify(this.state.cart))
     }
@@ -135,7 +204,7 @@ export default class ProductProvider extends Component {
             this.syncStorage()
             this.openCart()
         })
-    } 
+    }
 
     render() {
 
@@ -147,7 +216,11 @@ export default class ProductProvider extends Component {
                 openCart: this.openCart,
                 closeCart: this.closeCart,
                 addToCart: this.addToCart,
-                handleNavMenu: this.handleNavMenu,
+                setSingleProduct: this.setSingleProduct,
+                increment: this.increment,
+                decrement: this.decrement,
+                removeItem: this.removeItem,
+                clearCart: this.clearCart,
             }}>
                 {this.props.children}
             </ProductContext.Provider>
